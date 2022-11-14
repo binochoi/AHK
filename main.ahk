@@ -1,3 +1,15 @@
+isShiftSpaceLangModeEnabled := true
+^#g::
+    isShiftSpaceLangModeEnabled := !isShiftSpaceLangModeEnabled
+    title := "shift + space lang trans mode"
+    TrayTip, %title%, % isShiftSpaceLangModeEnabled ? "enable" : "disable"
+return
++Space::
+    if(isShiftSpaceLangModeEnabled == false) {
+        return
+    }
+    Send {SC1F2}
+return
 ; 전체화면 (F11)
 ^#MButton::
 ^MButton::
