@@ -46,7 +46,6 @@ return
 ; Win + W
 ; 프로그램 닫기
 #w::
-    MsgBox, sival
     SendInput !{F4}
 return
 
