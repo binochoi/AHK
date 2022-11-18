@@ -43,6 +43,13 @@ return
     SendInput ^#{F4}
 return
 
+; Win + W
+; 프로그램 닫기
+#w::
+    MsgBox, sival
+    SendInput !{F4}
+return
+
 ; Alt + Win + Z
 ; 볼륨 높이기
 !#z::
