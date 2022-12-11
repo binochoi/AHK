@@ -18,7 +18,7 @@ return
     SendInput {F11}
 return
 
-; Shift + Win + 스크롤 올림 & 내림
+; ctrl + Win + 스크롤 올림 & 내림
 ; 다른 데스크탑으로 이동 (up & down)
 +#WheelUp::
     SendInput +#{Left}
