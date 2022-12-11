@@ -12,7 +12,7 @@ return
 return
 ; 전체화면 (F11)
 ^#MButton::
-^MButton::
+#MButton::
 ^#Enter::
 #Enter::
     SendInput {F11}
