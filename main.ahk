@@ -30,12 +30,15 @@ return
 ; Ctrl + Win + 스크롤 올림
 ; 이전 데스크탑
 ^#WheelDown::
+^#Tab::
     SendInput ^#{Right}
 return
 ; Ctrl + Win + 스크롤 내림
 ; 다음 데스크탑
 ^#WheelUp::
+^+#Tab::
     SendInput ^#{Left}
+^+#Tab::
 return
 ; Ctrl + Win + W
 ; 데스크톱 닫기
