@@ -29,6 +29,14 @@ return
 +#WheelDown::
     SendInput +#{Right}
 return
+; Win + 스크롤 올림 & 내림
+; 프로그램 최대화 최소화
+#WheelUp::
+    SendInput #{Up}
+return
+#WheelDown::
+    SendInput #{Down}
+return
 ; rename current desktop
 ; ^#r::
 ;     InputBox, name, rename current desktop title
