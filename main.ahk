@@ -6,10 +6,13 @@ isShiftSpaceLangModeEnabled := true
 return
 +Space::
     if(isShiftSpaceLangModeEnabled == false) {
+        Send +{Space}
         return
     }
     Send {SC1F2}
 return
+
+; TrayTip, "한/영 키가 shift + space로 변환되었습니다."  , % ExStyle & 0x8 ? "Always-On-Top ON" : "Always-On-Top OFF"
 ; 전체화면 (F11)
 ^#MButton::
 #MButton::
@@ -26,6 +29,11 @@ return
 +#WheelDown::
     SendInput +#{Right}
 return
+; rename current desktop
+; ^#r::
+;     InputBox, name, rename current desktop title
+;     MsgBox, %name%
+; return
 
 ; Ctrl + Win + 스크롤 올림
 ; 이전 데스크탑
@@ -38,7 +46,6 @@ return
 ^#WheelUp::
 ^+#Tab::
     SendInput ^#{Left}
-^+#Tab::
 return
 ; Ctrl + Win + W
 ; 데스크톱 닫기
