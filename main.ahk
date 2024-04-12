@@ -75,17 +75,17 @@ isShiftSpaceLangModeEnabled := true
 {
     SendInput("!{F4}")
 }
-; Alt + Win + Z
-; 볼륨 높이기
-!#z::
-{
-    SendInput("{Volume_Up 4}")
-}
 ; Alt + Win + X
-; 볼륨 낮추기
+; 볼륨 높이기
 !#x::
 {
-    SendInput("{Volume_Down 4}")
+    SendInput("{Volume_Up 2}")
+}
+; Alt + Win + Z
+; 볼륨 낮추기
+!#z::
+{
+    SendInput("{Volume_Down 2}")
 }
 !#c::
 {
