@@ -15,9 +15,13 @@ jobs:
       run: |
         Invoke-WebRequest -Uri "https://www.autohotkey.com/download/2.0/AutoHotkey_2.0-beta.1.zip" -OutFile "AutoHotkey.zip"
         Expand-Archive -Path "AutoHotkey.zip" -DestinationPath "AutoHotkey"
+    - name: Download Ahk2Exe
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/AutoHotkey/Ahk2Exe/releases/download/Ahk2Exe1.1.37.01c1/Ahk2Exe1.1.37.01c1.zip" -OutFile "Ahk2Exe.zip"
+        Expand-Archive -Path "Ahk2Exe.zip" -DestinationPath "Ahk2Exe"
     - name: Build AHK Script
       run: |
-        .\Ahk2Exe.exe /base ./AutoHotkey64.exe /in ./main.ahk /out ./main.exe
+        ./Ahk2Exe/Ahk2Exe.exe /base ./AutoHotkey/AutoHotkey64.exe /in ./main.ahk /out ./main.exe
         
     - run: ls
     - run: ls ./AutoHotKey
@@ -37,8 +41,8 @@ jobs:
         APP_VERSION: ${{ steps.app_version.outputs.tag }}
         GITHUB_TOKEN: ${{ secrets.PAT }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: 0.0.4
-        release_name: Release 0.0.4
+        tag_name: latest
+        release_name: Release latest
         draft: false
         prerelease: false
         
