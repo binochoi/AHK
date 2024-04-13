@@ -1,41 +1,11 @@
-isLangModeEnabledByShiftSpace := true
-updateIsLangModeEnabledByShiftSpace(bool) {
-    global isLangModeEnabledByShiftSpace
-    isLangModeEnabledByShiftSpace := bool
-}
-isWinKeyDisabled := false
-updateIsWinKeyDisabled(bool) {
-    global isWinKeyDisabled
-    isWinKeyDisabled := bool
-}
+#Include './classes/ToggleUi.ahk'
 
 ; Win + F1
-#F1::
-{
-    ui := Gui(,"Panel",)
-    ui.Opt('+AlwaysOnTop')
-    
-    langModeToggle := ui.Add('Checkbox', 'w200 h20', 'Shift + Space로 언어 변경')
-    langModeToggle.Value := isLangModeEnabledByShiftSpace
-    langModeToggle.OnEvent('Click', clickLangModeToggle)
-    clickLangModeToggle(el, _) {
-        updateIsLangModeEnabledByShiftSpace(el.Value)
-        TrayTip('panel', '언어 변경 ' . (isLangModeEnabledByShiftSpace ? '허용' : '잠금'))
-    }
-    
-    winToggle := ui.Add('Checkbox', 'w200 h20', 'Win키 잠금')
-    winToggle.Value := isWinKeyDisabled
-    winToggle.OnEvent('Click', clickWinToggle)
-    clickWinToggle(el, _) {
-        updateIsWinKeyDisabled(el.Value)
-        TrayTip('panel', 'win키 ' . (isWinKeyDisabled ? '잠금' : '허용'))
-    }
-    ui.Show("w200 h300")
-}
+#F1::ToggleUi.init()
 
 +Space::
 {
-    if(isLangModeEnabledByShiftSpace == false) {
+    if(ToggleUi.isLangModeEnabledByShiftSpace == false) {
         Send("+{Space}")
         return
     }
