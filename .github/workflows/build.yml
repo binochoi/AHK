@@ -17,7 +17,7 @@ jobs:
         Expand-Archive -Path "AutoHotkey.zip" -DestinationPath "AutoHotkey"
     - name: Build AHK Script
       run: |
-        .\AutoHotkey\AutoHotkey64.exe main.ahk
+        .\Ahk2Exe.exe /base ./AutoHotkey64.exe /in ./main.ahk /out ./main.exe
         
     - run: ls
     - run: ls ./AutoHotKey
