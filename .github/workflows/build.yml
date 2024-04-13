@@ -22,11 +22,6 @@ jobs:
     - name: Set tag env
       id: app_version
       run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-    - name: Set app version from tag
-      env:
-        APP_VERSION: ${{ steps.app_version.outputs.tag }}
-      run: |
-        echo ${{ env.APP_VERSION }}
         
     - name: Create Release
       id: release
