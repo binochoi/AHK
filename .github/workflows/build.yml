@@ -19,9 +19,11 @@ jobs:
       run: |
         .\AutoHotkey\AutoHotkey64.exe main.ahk
         
-    - name: Set tag env
-      id: app_version
-      run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+    - run: ls
+    - run: ls ./AutoHotKey
+    # - name: Set tag env
+    #   id: app_version
+    #   run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
     # - name: Set app version from tag
     #   env:
     #     APP_VERSION: ${{ steps.app_version.outputs.tag }}
