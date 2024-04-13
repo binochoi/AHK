@@ -30,6 +30,12 @@ jobs:
     #   run: |
     #     echo ${{ env.APP_VERSION }}
         
+    - uses: dev-drprasad/delete-older-releases@v0.3.3
+      with:
+        repo: binochoi/AHK # defaults to current repo
+        keep_latest: 0
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
     - name: Create Release
       id: release
       uses: actions/create-release@v1
