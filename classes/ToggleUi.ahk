@@ -1,6 +1,7 @@
 class ToggleUi {
     static isLangModeEnabledByShiftSpace := true
     static isWinKeyDisabled := false
+    static isMouseDoubleClickMacros := false
     
     static init() {
         ui := Gui(,"Panel",)
