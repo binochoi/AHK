@@ -1,0 +1,57 @@
+name: Build AHK v2 Script
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Download AutoHotkey v2
+      run: |
+        Invoke-WebRequest -Uri "https://www.autohotkey.com/download/2.0/AutoHotkey_2.0-beta.1.zip" -OutFile "AutoHotkey.zip"
+        Expand-Archive -Path "AutoHotkey.zip" -DestinationPath "AutoHotkey"
+    - name: Download Ahk2Exe
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/AutoHotkey/Ahk2Exe/releases/download/Ahk2Exe1.1.37.01c1/Ahk2Exe1.1.37.01c1.zip" -OutFile "Ahk2Exe.zip"
+        Expand-Archive -Path "Ahk2Exe.zip" -DestinationPath "Ahk2Exe"
+    - name: Build AHK Script
+      run: |
+        ./Ahk2Exe/Ahk2Exe.exe /base ./AutoHotkey/AutoHotkey64.exe /in ./main.ahk /out ./main.exe
+        
+    # - name: Set tag env
+    #   id: app_version
+    #   run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+    # - name: Set app version from tag
+    #   env:
+    #     APP_VERSION: ${{ steps.app_version.outputs.tag }}
+    #   run: |
+    #     echo ${{ env.APP_VERSION }}
+        
+    - name: Create Release
+      id: release
+      uses: actions/create-release@v1
+      env:
+        APP_VERSION: ${{ steps.app_version.outputs.tag }}
+        GITHUB_TOKEN: ${{ secrets.PAT }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: latest
+        release_name: Release latest
+        draft: false
+        prerelease: false
+        
+        
+      
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+      with:
+        upload_url: ${{ steps.release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, this is why it needs the id
+        asset_path: main.exe
+        asset_name: main.exe
+        asset_content_type: text/plain
