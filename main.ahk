@@ -55,6 +55,7 @@
 !#f:: ; feedback hub
 #c:: ; cortana
 #h:: ; 개 쓸 데 없는거
+^#s:: ; speech recognition
 {
     return
 }
