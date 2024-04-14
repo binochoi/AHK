@@ -21,15 +21,6 @@ jobs:
       run: |
         ./Ahk2Exe/Ahk2Exe.exe /base ./AutoHotkey/AutoHotkey64.exe /in ./main.ahk /out ./main.exe
         
-    # - name: Set tag env
-    #   id: app_version
-    #   run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-    # - name: Set app version from tag
-    #   env:
-    #     APP_VERSION: ${{ steps.app_version.outputs.tag }}
-    #   run: |
-    #     echo ${{ env.APP_VERSION }}
-        
     - uses: dev-drprasad/delete-older-releases@v0.3.3
       with:
         repo: binochoi/AHK # defaults to current repo
