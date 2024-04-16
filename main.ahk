@@ -53,7 +53,6 @@
 #Esc::SendInput("#{``}")
 ; Win + F 피드백 허브, 코타나 무시
 !#f:: ; feedback hub
-#c:: ; cortana
 #h:: ; 개 쓸 데 없는거
 ^#s:: ; speech recognition
 {
