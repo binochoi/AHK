@@ -12,6 +12,20 @@
     Send("{SC1F2}")
 }
 
+; 한영키 capslockd으로 변경
+; link: `https://www.clien.net/service/board/lecture/18685790`
+capslock:: {
+    While (GetKeyState("CapsLock", "P")) { ;키 눌림을 물리적으로 유지하는 동안
+        if (A_TimeSinceThisHotkey >= 300) { ;이 Hotkey 실행 후 300ms(0.3s) 지났다면
+            SetCapsLockState !GetKeyState("CapsLock", "T") ;CapsLock 토글
+            KeyWait("CapsLock") ;키 릴리즈까지 대기
+            Return ;Hotkey  종료
+        }
+    }
+
+    Send("{vk15sc1F2}") ;한영키 전달
+}
+
 ; 전체화면 (F11)
 ^#MButton::
 #MButton::
