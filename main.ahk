@@ -3,7 +3,7 @@
 ; Win + F1
 #F1::ToggleUi.init()
 
-+Space::
+^Space::
 {
     if(ToggleUi.isLangModeEnabledByShiftSpace == false) {
         Send("+{Space}")
